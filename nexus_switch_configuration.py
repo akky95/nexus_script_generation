@@ -448,13 +448,13 @@ def module_interfaces():
     elif(__s1_conn[3] == 1):
         backhaul_vlan_list.append(i)
 
-    for i,j in zip(backhaul_vlan_list,range(len(backhaul_vlan_list)-1)):
-        backhaul_vlan = backhaul_vlan + str(i) + ","
-    backhaul_vlan = backhaul_vlan + str(backhaul_vlan_list[len(backhaul_vlan_list)-1])
+    for i,j in zip(backhaul_vlan_list,range(len(backhaul_vlan_list))):
+        backhaul_vlan = backhaul_vlan + "," + str(i)
+    #backhaul_vlan = backhaul_vlan + str(backhaul_vlan_list[len(backhaul_vlan_list)-1])
     temp_text = temp_text +("interface Ethernet1/47\n"
                             "  description \"equinix backhaul\"\n"
                             "  switchport mode trunk\n"
-                            "  switchport trunk allowed vlan 300," + str(backhaul_vlan) + "\n"
+                            "  switchport trunk allowed vlan 300" + str(backhaul_vlan) + "\n"
                             "\n"
                             "interface Ethernet1/48\n"
                             "  speed 1000\n"
